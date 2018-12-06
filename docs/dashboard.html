@@ -32,13 +32,13 @@
 	<script>
 		$(document).ready(function(){
 			$.ajax({
-				url:"https://sosnus.github.io/iot-tul-dashboard/json.json",
+				url:"https://lorastore20181206101456.azurewebsites.net/api/Measurements?id=1",
 				dataType:"json",
 				success:function(data){
 					$(data).each(function(index,value){
-						var record="<tr><td>"+value.idMeas+"</td><td>"+
-						value.idSensor+"</td><td>"+value.dateMeas+
-						"</td><td>"+value.valueMeas+"</td></tr>";
+						var record="<tr><td>"+value.measurementId+"</td><td>"+
+						value.sensorId+"</td><td>"+value.measurementDate+
+						"</td><td>"+value.value+"</td></tr>";
 						$("table").append(record);
 					});		
 				}
