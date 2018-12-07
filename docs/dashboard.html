@@ -100,7 +100,7 @@
                 console.log("START: refreshBtn");
                 $.ajax({
 
-                    url: "https://lorastore20181206101456.azurewebsites.net/api/Measurements?id=20",
+                    url: param,
                     dataType: "json",
                     success: function (data) {
                         $(data).each(function (index, value) {
