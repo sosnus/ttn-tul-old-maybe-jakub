@@ -103,6 +103,7 @@
                     url: param,
                     dataType: "json",
                     success: function (data) {
+                        $("table").empty();
                         $(data).each(function (index, value) {
                             var record = "<tr><td>" + value.measurementId + "</td><td>" +
                                 value.sensorId + "</td><td>" + value.measurementDate +
