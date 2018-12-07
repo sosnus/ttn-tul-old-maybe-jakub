@@ -12,6 +12,7 @@
 DHT dht;
 volatile bool pir = 0;
 int ileRazy=0;
+int wilgotnosc, temperatura;
 hd44780_I2Cexp lcd(0x20, I2Cexp_MCP23008,7,6,5,4,3,2,1,HIGH);
 
 
@@ -26,18 +27,30 @@ void setup() {
 }
 
 void loop() {
+  
+   ///////////////LCD///////////////////////////////
+  lcd.home();
+  lcd.print("temp: ");
+  lcd.print(temperatura);
+  lcd.print("*C");
+  lcd.setCursor(0,1);   
+  lcd.print("wilg: ");
+  lcd.print(wilgotnosc);
+  lcd.print(" %");
   ////////////////dht11///////////////////////////////////
   //Pobranie informacji o wilgotnosci
-  int wilgotnosc = dht.getHumidity();
+   wilgotnosc = dht.getHumidity();
   //Pobranie informacji o temperaturze
-  int temperatura = dht.getTemperature();
+   temperatura = dht.getTemperature();
   if (dht.getStatusString() == "OK") {
+    Serial.print("DHT11: ");
     Serial.print(wilgotnosc);
     Serial.print("% | ");
     Serial.print(temperatura);
     Serial.println("*C");
   }
     delay(dht.getMinimumSamplingPeriod());
+    
   ///////////////Analog input///////////////////////////////
   int potval=analogRead(POT);
   int lightvalue=analogRead(LIGHT);
@@ -51,17 +64,7 @@ void loop() {
   Serial.println(lightvalue);
   Serial.println("D3:");
   Serial.println(btnD3);
-  ///////////////LCD///////////////////////////////
-  lcd.home();
-  lcd.print("temp: ");
-  lcd.print(temperatura);
-  lcd.print("*C");
-  lcd.setCursor(0,1);   
-  lcd.print("wilg: ");
-  lcd.print(wilgotnosc);
-  lcd.print(" %");
-  delay(100);
-  lcd.clear();
+  
   ////////////////PIR///////////////////////////////////
   if(pir==1){
     pir=0;
@@ -76,7 +79,11 @@ void loop() {
     ileRazy=0;
     digitalWrite(LED, HIGH);
   }
+  delay(500);
+  lcd.clear();
 }
+
+
 void alarm() { //Przerwanie
   pir=1; //Wykryto kolejny alarm
 }
