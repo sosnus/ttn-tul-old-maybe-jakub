@@ -1,4 +1,5 @@
 import urllib.request
+# if err run in cmd: pip3 install urllib3
 from random import randint
 import json    
 import time
