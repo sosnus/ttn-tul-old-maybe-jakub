@@ -52,14 +52,6 @@
                         <option value="29">29</option>
                     </select>
                 </li>
-                <li class="list-group-item">sensorType:<select class="custom-select" id="select_sensorType">
-                        <option selected value="">All</option>
-                        <option value="">All</option>
-                        <option value="temp1">Temperature</option>
-                        <option value="press1">Pressure</option>
-                        <option value="hum1">Humidity</option>
-                    </select>
-                </li>
                 <li class="list-group-item">
                     <button type="button" name="button_1" class="btn btn-primary refreshBtn">Go!</button></li>
                 <!-- onclick="myFunction()" -->
@@ -90,7 +82,7 @@
         <script>
             $(document).ready(function () {
                 $.ajax({
-                    url: "https://lorastore20181206101456.azurewebsites.net/api/Measurements?id=0",
+                    url: "https://lorastore20181206101456.azurewebsites.net/api/Measurements?id=1",
                     dataType: "json",
                     success: function (data) {
                         $(data).each(function (index, value) {
