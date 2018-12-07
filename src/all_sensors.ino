@@ -7,14 +7,15 @@
 #define TEMP A2
 #define POT A1
 #define DHT11_PIN 6
-#define PIR 3
-#define LED 13//LED1
+#define PIR 2
+#define LED 13//LED
+#define RES 4//D4
 DHT dht;
 volatile bool pir = 0;
 int ileRazy=0;
 int wilgotnosc, temperatura;
 hd44780_I2Cexp lcd(0x20, I2Cexp_MCP23008,7,6,5,4,3,2,1,HIGH);
-
+bool reset=0;
 
 void setup() {
   lcd.begin(16,2);
@@ -24,6 +25,7 @@ void setup() {
   pinMode(LED, OUTPUT);
   digitalWrite(LED, LOW);   
   attachInterrupt(digitalPinToInterrupt(PIR), alarm, RISING);
+  attachInterrupt(digitalPinToInterrupt(RES), res, RISING);
 }
 
 void loop() {
@@ -70,20 +72,33 @@ void loop() {
     pir=0;
     Serial.print("ruch");
     Serial.print("");
-    //delay(1);
-    //if(digitalRead(PIR)==1){
     ileRazy++;  
-      //}
   }
   if(ileRazy>=6){
-    ileRazy=0;
     digitalWrite(LED, HIGH);
   }
+  if(ileRazy<6){
+    digitalWrite(LED, LOW);
+  }
+////////////////reset-D4///////////////////////////////
+ if(reset==1){
+    reset=0;
+    Serial.print("reset");
+    Serial.print("");
+    delay(50);
+    if(digitalRead(RES)==1){
+    ileRazy=0; 
+       }
+  }
+ 
   delay(500);
   lcd.clear();
 }
 
 
-void alarm() { //Przerwanie
-  pir=1; //Wykryto kolejny alarm
+void alarm() { 
+  pir=1; 
+}
+void res() { 
+  reset=1; 
 }
