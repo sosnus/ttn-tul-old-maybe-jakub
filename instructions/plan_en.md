@@ -1,25 +1,30 @@
- # Instrukcja dotycząca uruchomienia node ttn-tul-node-v1
+ # Manual - node ttn-tul-node-v1
  
- ## Konfiguracja Arduino
- ### Pobrać Arduino IDE
- ### Przetestować płytkę (wgrać i przetestować blinka)
- ### ainstalowac bibliotekę: LMIC-Arduino
- ## Portal thethingsnetwork.com
- ### Zarejestrowac się
- ### Utworzyć nową apliakcję oraz czujnik
- ## Uzyskać dane do portalu PŁ "LoraStore"
+ ## Arduino configuration
+ ### Download Arduino IDE
+ Link to the software is available on the website: https://www.arduino.cc/en/Main/Software.
+ ### Test the Arduino Board 
+ The easiest way to test the Arduino board is to load the "Blink" example.
+ You can find the project in the menu File/Examples/01.Basics/Blink or go throught tutorial: https://www.arduino.cc/en/Tutorial/Blink.
+ ### Install the LMIC-Arduino library 
+ Go to Sketch/Include Library\Manage Libraries... and search for "LMIC-Arduino". Install the newest version.
+ ## thethingsnetwork.com portal
+ ### Sign up
+ ### Create application and add device
+ ## Get date to PŁ "LoraStore" portal
+ Ask administrator for them.
  ## Arduino + LoRa
- ### Uruchomić sample ttn-abp z biblioteki LMIC-Arduino
- ### Podpiąć pod arduino tt-tul-node-v1 board z rfm95w oraz 1 dowolnym czujnikiem
- ### Uruchomić czujnik, wartośc odczytu z czujnika wykorzystac dalej gdy będzie potrzebna zmienna value
- ### Podmienić dane dotyczące sieci:
+ ### Open example "ttn-abp" from LMIC-Arduino library.
+ ### Connect 1 sensor and tt-tul-node-v1 board with rfm95w to Arduino.
+ ### Turn on the sensor and get the measurement, which you will use later to modify the variable "value".
+ ### Replace following network data:
  			i. NWKSKEY
  			ii. APPSKEY
  			iii. DEVADDR
- ### Zamienić domyślną wysyłaną wiadomość "Hello World" na Jsona zawierającego:
+ ### Replace default "Hello World" message with Json, which contains:
  			i. SensorId (String)
  			ii. SensorPassword (String)
- 			iii. Value (zmienna real)
- ## Testowanie działania programu
- ### Spawdzić na stronie console ttn czy widac ze dane przechodzą przez portal
- ### Sprawdzić czy endpoint logguje wyniki: https://lorastore20181206101456.azurewebsites.net/api/Measurements?id=3 (gdzie id to numer SensorId)
+ 			iii. Value (Real)
+ ## Testing program
+ ### Check on the console ttn website if data go throught the portal.
+ ### Check if the endpoint is logging data: https://lorastore20181206101456.azurewebsites.net/api/Measurements?id=3 (Id is SensorId)
