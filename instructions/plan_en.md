@@ -21,15 +21,15 @@
  ## Connect arduino uno to RFM95W module, potentiometer (A1 pin) and LCD (SDA,SCL).
  ## Download our example from https://github.com/jakuw/ttn-tul/tree/master/src/node/arduino_ttn.
  Project "arduino ttn" contains three files:
-    i. arduino_ttn - code responsible for connection with RFM95W module,
-    ii. my_functions - here you place your part of code,
-    iii. send_functions - functions, which convert data and create appropriate message.
+  i. arduino_ttn - code responsible for connection with RFM95W module,
+  ii. my_functions - here you place your part of code,
+  iii. send_functions - functions, which convert data and create appropriate message.
  ## Replace following network data in "send_functions":
   		i. NWKSKEY
  			ii. APPSKEY
  			iii. DEVADDR
  ## Replace following sensor data in "send_functions":
-  			i. SensorId
+  		i. SensorId
  			ii. SensorPassword
  ## Upload project
  ## Check data traffic in data tab on https://console.thethingsnetwork.org/applications website.
