@@ -16,6 +16,10 @@
  ## Change Activation Method to ABP
  ## Add decoder function here https://console.thethingsnetwork.org/applications/ YOUR NAME OF APPLICATION /payload-formats 
  Decoder function is available on our the github.
+ ## Add HTTP integration here https://console.thethingsnetwork.org/applications/ YOUR NAME OF APPLICATION /integrations
+ Access Key: default key
+ URL: https://ttn-parser-cs.azurewebsites.net/api/ttn-11-01-2019?code=A4HPfv9KqjDE2StqdZPc01j0eaZ0hJhDSqEy6QpTJyBYHy3jLCGyhg==
+ Method: POST
  ## Arduino + LoRa
  ### Check board
  ## Connect arduino uno to RFM95W module, potentiometer (A1 pin) and LCD (SDA,SCL).
