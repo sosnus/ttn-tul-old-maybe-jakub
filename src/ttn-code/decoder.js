@@ -1,13 +1,15 @@
+
 function Decoder(bytes, port) {
   // Decode an uplink message from a buffer
   // (array) of bytes to an object of fields.
   var decoded = {sensorID:"",sensorPassword:"",Value:""};
-  
+  var flag=0;
   for (i=0;i<8;i++)
   {
-    if (String.fromCharCode(bytes[i]) != "0")
+    if ((String.fromCharCode(bytes[i]) != "0") || flag==1)
     {
       decoded.sensorID += String.fromCharCode(bytes[i]);
+      flag=1;
     }
   }
   
